@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Villa Rosso Corallo – La tua casa vacanze a Punta Secca</title>
+<meta name="description" content="La casa vacanze ideale nella spiaggia del Commissario Montalbano a Punta Secca. Villa Rosso Corallo: due case con giardino, verande e ogni comfort.">
+<meta name="keywords" content="Villa Rosso Corallo, casa vacanze Punta Secca, casa Montalbano, vacanze Sicilia, Ragusa, appartamenti in affitto Punta Secca">
+<meta property="og:title" content="Villa Rosso Corallo – La tua casa vacanze a Punta Secca">
+<meta property="og:description" content="Due case con giardino a due passi dalla spiaggia della Casa di Montalbano.">
+<meta property="og:image" content="https://www.villarossocorallo.com/foto/copertina.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:#f8f4ef;color:#23272e;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;top:0!important}
+*{box-sizing:border-box}
+a{color:oklch(0.55 0.17 32);text-decoration:none}
+a:hover{color:oklch(0.45 0.16 32)}
+img{display:block;max-width:100%}
+iframe.skiptranslate,.goog-te-banner-frame,#goog-gt-tt,.VIpgJd-ZVi9od-ORHb-OEVmcd{display:none!important}
+.goog-te-gadget{font-family:inherit!important;font-size:12px!important;color:#6b6f76!important}
+.goog-te-gadget select{width:100%;padding:8px;border:1px solid #ddd6cc;border-radius:8px;font-family:inherit;font-size:14px;background:#fff;margin:4px 0}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(248,244,239,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #e6dfd5">
+  <div style="max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;color:#23272e;margin-right:auto">
+      <span style="width:12px;height:12px;border-radius:50%;background:oklch(0.62 0.17 32)"></span>
+      <span style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:26px;line-height:1;letter-spacing:-0.01em">Villa Rosso Corallo</span>
+    </a>
+    <nav style="display:flex;gap:22px;flex-wrap:wrap;font-size:14px;font-weight:500;order:3;flex-basis:auto">
+      <a href="#villa" style="color:#23272e">La villa</a>
+      <a href="#case" style="color:#23272e">Le case</a>
+      <a href="#dintorni" style="color:#23272e">Dintorni</a>
+      <a href="#recensioni" style="color:#23272e">Recensioni</a>
+      <a href="#contatti" style="color:#23272e">Contatti</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px;order:2">
+      <div class="notranslate" style="position:relative">
+        <button onClick="{{ toggleLang }}" style="display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border:1px solid #ddd6cc;border-radius:999px;background:#fff;font:inherit;font-size:13px;font-weight:600;color:#23272e;cursor:pointer;letter-spacing:0.04em">
+          <span style="width:16px;height:16px;border-radius:50%;border:1.5px solid #23272e"></span>
+          <span>{{ curLang }}</span>
+        </button>
+        <div style="display:{{ langDisplay }};position:absolute;right:0;top:48px;width:240px;background:#fff;border:1px solid #e6dfd5;border-radius:14px;box-shadow:0 20px 50px rgba(30,25,20,0.14);padding:8px">
+          <sc-for list="{{ langs }}" as="l" hint-placeholder-count="6">
+            <button onClick="{{ l.pick }}" style="display:flex;justify-content:space-between;width:100%;padding:10px 12px;border:0;background:transparent;border-radius:8px;font:inherit;font-size:14px;color:#23272e;cursor:pointer;text-align:left" style-hover="background:#f5efe8">
+              <span>{{ l.label }}</span><span style="color:#8a8f96;font-size:12px;font-weight:600">{{ l.code }}</span>
+            </button>
+          </sc-for>
+          <div style="border-top:1px solid #eee7de;margin:6px 4px 0;padding:10px 8px 4px">
+            <div style="font-size:12px;font-weight:600;color:#6b6f76;margin-bottom:4px;letter-spacing:0.04em;text-transform:uppercase">Tutte le lingue</div>
+            <sc-if value="{{ gtBlocked }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;line-height:1.45;color:#4a4f57;margin:4px 0 8px">La traduzione usa Google Translate e richiede i cookie di preferenza.</div><button onClick="{{ allowPrefs }}" style="width:100%;height:38px;border:0;border-radius:8px;background:#23272e;color:#fff;font:inherit;font-size:13px;font-weight:600;cursor:pointer">Attiva traduzione</button></sc-if>
+            <div id="google_translate_element"></div>
+          </div>
+        </div>
+      </div>
+      <a href="tel:+393278272983" style="display:flex;align-items:center;height:40px;padding:0 18px;border-radius:999px;background:oklch(0.62 0.17 32);color:#fff;font-size:14px;font-weight:600" style-hover="background:oklch(0.55 0.17 32);color:#fff">Prenota</a>
+    </div>
+  </div>
+</header>
+
+<section id="top" data-screen-label="Hero" style="position:relative;min-height:min(88vh,820px);display:flex;align-items:flex-end;overflow:hidden;background:#2b2f36">
+  <img src="foto/copertina.jpg" alt="Villa Rosso Corallo, facciata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,18,16,0.62) 0%,rgba(20,18,16,0.25) 55%,rgba(20,18,16,0) 80%),linear-gradient(180deg,rgba(20,18,16,0.2) 0%,rgba(20,18,16,0.1) 35%,rgba(20,18,16,0.75) 100%)"></div>
+  <div style="position:relative;max-width:1280px;width:100%;margin:0 auto;padding:0 24px 64px;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,0.45)">
+    <div style="font-size:13px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:18px">Punta Secca · Ragusa · Sicilia</div>
+    <h1 style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(44px,7.5vw,112px);line-height:0.95;letter-spacing:-0.02em;margin:0;max-width:980px;text-wrap:balance">Giardino, verande, mare e tramonti <em style="color:oklch(0.8 0.1 40);font-style:normal">mozzafiato</em></h1>
+    <p style="font-size:clamp(16px,1.6vw,20px);line-height:1.5;max-width:560px;margin:24px 0 32px;color:rgba(255,255,255,0.92);text-wrap:pretty">Due case con giardino a due passi dalla spiaggia della Casa del Commissario Montalbano.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="#contatti" style="display:flex;align-items:center;height:52px;padding:0 26px;border-radius:999px;background:oklch(0.62 0.17 32);color:#fff;font-weight:600;font-size:15px" style-hover="background:oklch(0.55 0.17 32);color:#fff">Richiedi disponibilità</a>
+      <a href="#case" style="display:flex;align-items:center;height:52px;padding:0 26px;border-radius:999px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.5);color:#fff;font-weight:600;font-size:15px;backdrop-filter:blur(6px)" style-hover="background:rgba(255,255,255,0.24);color:#fff">Scopri le case</a>
+    </div>
+  </div>
+</section>
+
+<section id="villa" data-screen-label="La villa" style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) 24px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,96px);align-items:start">
+    <div>
+      <div style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:oklch(0.55 0.17 32);margin-bottom:18px">La villa</div>
+      <h2 style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(36px,4.6vw,64px);line-height:1.02;letter-spacing:-0.015em;margin:0 0 28px;text-wrap:balance">Nuovissima, a pochi metri dalla spiaggia di Montalbano</h2>
+      <div style="display:flex;gap:18px;align-items:center;padding:18px;border:1px solid #e6dfd5;border-radius:16px;background:#fff;max-width:440px">
+        <img src="foto/premio-booking.png" alt="Booking.com Traveller Review Awards 2026 – 9,7 su 10" style="width:112px;height:auto;border-radius:8px;flex-shrink:0">
+        <div style="font-size:14px;line-height:1.45;color:#4a4f57"><strong style="color:#23272e;display:block;font-size:15px;margin-bottom:2px">Traveller Review Awards 2026</strong>Booking.com · punteggio 9,7 su 10 assegnato dagli ospiti</div>
+      </div>
+    </div>
+    <div style="font-size:17px;line-height:1.7;color:#3d424a;display:flex;flex-direction:column;gap:18px;text-wrap:pretty">
+      <p style="margin:0">Villa nuovissima e a due passi dalla famosa spiaggia dove è situata la Casa del Commissario Montalbano, a Punta Secca, in provincia di Ragusa. Ideale per famiglie e gruppi numerosi di amici.</p>
+      <p style="margin:0">Ristrutturata completamente tra il 2017 e il 2018, la villa è composta da due case con giardino (più di 200 mq) completamente autonome, dotate di verande esterne – di cui una utilizzabile come posteggio – che permettono di trovare un angolo di relax, dove poter gustare cibi appena arrostiti nel barbecue. Ciascuna casa, dotata di sistema antifurto, presenta interni completamente nuovi e ogni stanza è climatizzata.</p>
+      <p style="margin:0">La vicinanza al centro di Punta Secca, al supermercato del borgo e ad un ampio spazio dove posteggiare rendono la nostra struttura il luogo ideale per trascorrere le vacanze in Sicilia all’insegna del relax, del divertimento e di tramonti mozzafiato.</p>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1px;background:#e6dfd5;border:1px solid #e6dfd5;border-radius:18px;overflow:hidden;margin-top:clamp(48px,6vw,80px)">
+    <div style="background:#f8f4ef;padding:28px"><div style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:48px;line-height:1">2</div><div style="font-size:14px;color:#5a5f67;margin-top:8px">case completamente autonome</div></div>
+    <div style="background:#f8f4ef;padding:28px"><div style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:48px;line-height:1">200+ mq</div><div style="font-size:14px;color:#5a5f67;margin-top:8px">di giardino</div></div>
+    <div style="background:#f8f4ef;padding:28px"><div style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:48px;line-height:1">9 + 4</div><div style="font-size:14px;color:#5a5f67;margin-top:8px">ospiti prenotando la villa intera</div></div>
+    <div style="background:#f8f4ef;padding:28px"><div style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:48px;line-height:1">2018</div><div style="font-size:14px;color:#5a5f67;margin-top:8px">ristrutturazione completa</div></div>
+  </div>
+</section>
+
+<section id="case" data-screen-label="Le case" style="background:#fff;border-top:1px solid #e6dfd5;border-bottom:1px solid #e6dfd5">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) 24px;display:flex;flex-direction:column;gap:clamp(72px,9vw,128px)">
+    <div style="display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap">
+      <div>
+        <div style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:oklch(0.55 0.17 32);margin-bottom:18px">Le case</div>
+        <h2 style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(36px,4.6vw,64px);line-height:1.02;letter-spacing:-0.015em;margin:0">Scegli la tua casa, o prendi la villa intera</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.5;color:#4a4f57;max-width:380px;padding:16px 18px;background:#f8f4ef;border-radius:14px">
+        <strong style="color:#23272e">Alta stagione</strong>
+        <span>Check-in e check-out il sabato, soggiorno minimo di 7 notti.</span>
+      </div>
+    </div>
+
+    <article data-screen-label="Villa Comfort" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:clamp(32px,5vw,72px);align-items:start">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(80px,10vw,150px);gap:8px">
+        <button onClick="{{ comfortMain.open }}" style="grid-column:span 4;grid-row:span 3;padding:0;border:0;border-radius:16px;overflow:hidden;cursor:zoom-in;background:#eee7de">
+          <img src="foto/comfort-01.jpg" alt="Villa Comfort" style="width:100%;height:100%;object-fit:cover">
+        </button>
+        <sc-for list="{{ comfortThumbs }}" as="p" hint-placeholder-count="4">
+          <button onClick="{{ p.open }}" style="position:relative;padding:0;border:0;border-radius:10px;overflow:hidden;cursor:zoom-in;background:#eee7de">
+            <img src="{{ p.t }}" alt="Foto Villa Comfort" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+            <sc-if value="{{ p.more }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(20,18,16,0.55);color:#fff;font-weight:600;font-size:15px">+{{ p.more }} foto</span>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+      <div>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:oklch(0.95 0.03 32);color:oklch(0.48 0.15 32)">4 + 2 ospiti</span>
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:#f1ece5;color:#4a4f57">Posto auto coperto</span>
+        </div>
+        <h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(34px,3.6vw,52px);line-height:1.02;margin:0 0 18px">Villa “Comfort”</h3>
+        <p style="font-size:17px;line-height:1.65;color:#3d424a;margin:0 0 24px;text-wrap:pretty">Con veranda, giardino e posto auto. Una camera matrimoniale, una camera con letti singoli componibili in un matrimoniale, cucina-soggiorno con comodo divano letto matrimoniale, bagno e doppio servizio. Giardino privato e veranda esterna coperta, utilizzabile anche come posto auto.</p>
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#6b6f76;margin-bottom:10px">Servizi</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px">
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Aria condizionata</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Barbecue</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Ombrellone</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Wi-Fi</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Lavatrice</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">TV</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Asciugacapelli</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Utensili da cucina</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Servizi essenziali</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Sistema antifurto</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Lettino bimbi su richiesta</span>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+          <a href="#contatti" style="display:flex;align-items:center;height:48px;padding:0 22px;border-radius:999px;background:#23272e;color:#fff;font-weight:600;font-size:15px" style-hover="background:#000;color:#fff">Richiedi disponibilità</a>
+          <span style="font-size:12px;color:#6b6f76;line-height:1.5">CIR 19088010C208517<br>CIN IT088010C2DCXN9FMD</span>
+        </div>
+      </div>
+    </article>
+
+    <article data-screen-label="Villa Deluxe" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:clamp(32px,5vw,72px);align-items:start">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(80px,10vw,150px);gap:8px">
+        <button onClick="{{ deluxeMain.open }}" style="grid-column:span 4;grid-row:span 3;padding:0;border:0;border-radius:16px;overflow:hidden;cursor:zoom-in;background:#eee7de">
+          <img src="foto/deluxe-01.jpg" alt="Villa Deluxe" style="width:100%;height:100%;object-fit:cover">
+        </button>
+        <sc-for list="{{ deluxeThumbs }}" as="p" hint-placeholder-count="4">
+          <button onClick="{{ p.open }}" style="position:relative;padding:0;border:0;border-radius:10px;overflow:hidden;cursor:zoom-in;background:#eee7de">
+            <img src="{{ p.t }}" alt="Foto Villa Deluxe" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+            <sc-if value="{{ p.more }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(20,18,16,0.55);color:#fff;font-weight:600;font-size:15px">+{{ p.more }} foto</span>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+      <div>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:oklch(0.95 0.03 32);color:oklch(0.48 0.15 32)">5 + 2 ospiti</span>
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:#f1ece5;color:#4a4f57">Ampio giardino</span>
+        </div>
+        <h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(34px,3.6vw,52px);line-height:1.02;margin:0 0 18px">Villa “Deluxe”</h3>
+        <p style="font-size:17px;line-height:1.65;color:#3d424a;margin:0 0 24px;text-wrap:pretty">Con veranda su ampio giardino. Una camera matrimoniale, una camera tripla, cucina-soggiorno con comodo divano letto matrimoniale, bagno e doppio servizio. Ampio giardino privato con veranda.</p>
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#6b6f76;margin-bottom:10px">Servizi</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px">
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Aria condizionata</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Barbecue</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Ombrellone</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Wi-Fi</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Lavatrice</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">TV</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Asciugacapelli</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Utensili da cucina</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Servizi essenziali</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Sistema antifurto</span>
+          <span style="font-size:14px;padding:7px 13px;border:1px solid #e6dfd5;border-radius:999px">Lettino bimbi su richiesta</span>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+          <a href="#contatti" style="display:flex;align-items:center;height:48px;padding:0 22px;border-radius:999px;background:#23272e;color:#fff;font-weight:600;font-size:15px" style-hover="background:#000;color:#fff">Richiedi disponibilità</a>
+          <span style="font-size:12px;color:#6b6f76;line-height:1.5">CIR 19088010C208512<br>CIN IT088010C2ZHZM3VDY</span>
+        </div>
+      </div>
+    </article>
+
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;padding:clamp(28px,4vw,44px);border-radius:20px;background:oklch(0.62 0.17 32);color:#fff">
+      <div style="max-width:640px">
+        <div style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(28px,3vw,40px);line-height:1.05;margin-bottom:8px">Villa per intero: fino a 9 persone più 4 extra</div>
+        <div style="font-size:16px;line-height:1.5">È possibile prenotare soltanto una casa oppure l’intera villa.</div>
+      </div>
+      <a href="#contatti" style="display:flex;align-items:center;height:52px;padding:0 26px;border-radius:999px;background:#fff;color:oklch(0.45 0.16 32);font-weight:700;font-size:15px" style-hover="background:#f8f4ef;color:oklch(0.4 0.16 32)">Contattaci</a>
+    </div>
+  </div>
+</section>
+
+<section id="dintorni" data-screen-label="Dintorni" style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) 24px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(24px,5vw,72px);align-items:end;margin-bottom:44px">
+    <div>
+      <div style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:oklch(0.55 0.17 32);margin-bottom:18px">Nei dintorni</div>
+      <h2 style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(36px,4.6vw,64px);line-height:1.02;letter-spacing:-0.015em;margin:0;text-wrap:balance">La casa di Montalbano, le spiagge e il Barocco ragusano</h2>
+    </div>
+    <p style="font-size:17px;line-height:1.65;color:#3d424a;margin:0;text-wrap:pretty">La villa dista pochi metri dalla spiaggia dove si trova la Casa del Commissario Montalbano. A pochi chilometri, oltre alle stupende spiagge della costa ragusana, i luoghi da visitare assolutamente sono Ragusa Ibla, il Castello di Donnafugata, Scicli e Modica.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));grid-auto-rows:220px;grid-auto-flow:dense;gap:10px">
+    <sc-for list="{{ dintorni }}" as="p" hint-placeholder-count="12">
+      <button onClick="{{ p.open }}" style="padding:0;border:0;border-radius:12px;overflow:hidden;cursor:zoom-in;background:#eee7de;grid-row:{{ p.rows }}">
+        <img src="{{ p.t }}" alt="Dintorni di Punta Secca" loading="lazy" style="width:100%;height:100%;object-fit:cover" style-hover="transform:scale(1.04)">
+      </button>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Mappa" style="max-width:1280px;margin:0 auto;padding:0 24px clamp(64px,9vw,120px)">
+  <div style="border-radius:20px;overflow:hidden;border:1px solid #e6dfd5;height:clamp(320px,40vw,460px);background:#eee7de">
+    <sc-if value="{{ mapOk }}" hint-placeholder-val="{{ false }}"><iframe title="Mappa Villa Rosso Corallo" src="https://www.google.com/maps?q=36.79094,14.49358&amp;z=15&amp;output=embed" style="width:100%;height:100%;border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></sc-if>
+    <sc-if value="{{ mapBlocked }}" hint-placeholder-val="{{ true }}">
+      <div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center">
+        <div style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:28px;line-height:1.1">Mappa di Google</div>
+        <div style="font-size:15px;color:#4a4f57;max-width:440px;line-height:1.55">Per visualizzare la mappa è necessario accettare i contenuti di terze parti (Google Maps), che possono impostare cookie.</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+          <button onClick="{{ allowMap }}" style="height:46px;padding:0 22px;border:0;border-radius:999px;background:oklch(0.62 0.17 32);color:#fff;font:inherit;font-weight:600;font-size:15px;cursor:pointer" style-hover="background:oklch(0.55 0.17 32)">Carica la mappa</button>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=36.79094,14.49358" target="_blank" rel="noopener" style="display:flex;align-items:center;height:46px;padding:0 22px;border:1px solid #cfc8be;border-radius:999px;color:#23272e;font-weight:600;font-size:15px" style-hover="border-color:#23272e;color:#23272e">Apri in Google Maps ↗</a>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<section id="recensioni" data-screen-label="Recensioni" style="background:#23272e;color:#f8f4ef">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) 24px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,5vw,72px);align-items:end;margin-bottom:48px">
+      <div>
+        <div style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:oklch(0.78 0.12 36);margin-bottom:18px">Recensioni</div>
+        <h2 style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-0.015em;margin:0">Dicono di noi</h2>
+      </div>
+      <div>
+        <p style="font-size:16px;line-height:1.6;color:#c9c4bc;margin:0 0 16px">Leggi le recensioni dei nostri ospiti presso i nostri partner:</p>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+          <a href="https://share.google/LozzYhZG0I8BAHFWv" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border:1px solid #3d424a;border-radius:12px;color:#f8f4ef;font-weight:600" style-hover="background:#2e333b;color:#fff">Google <span>↗</span></a>
+          <a href="https://www.airbnb.it/rooms/23839019" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border:1px solid #3d424a;border-radius:12px;color:#f8f4ef;font-weight:600" style-hover="background:#2e333b;color:#fff">Airbnb <span>↗</span></a>
+          <a href="https://www.booking.com/hotel/it/villa-rosso-corallo.it.html" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border:1px solid #3d424a;border-radius:12px;color:#f8f4ef;font-weight:600" style-hover="background:#2e333b;color:#fff">Booking <span>↗</span></a>
+          <a href="https://vrbo.onelink.me/ItNz/mgmg8g8w" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border:1px solid #3d424a;border-radius:12px;color:#f8f4ef;font-weight:600" style-hover="background:#2e333b;color:#fff">Vrbo <span>↗</span></a>
+        </div>
+      </div>
+    </div>
+    
+    <p style="font-size:15px;color:#c9c4bc;margin:32px 0 0">Visita anche la nostra pagina <a href="https://www.facebook.com/pages/category/Vacation-Home-Rental/Villa-Rosso-Corallo-204336596964754/" target="_blank" rel="noopener" style="color:oklch(0.8 0.11 36);font-weight:600">Facebook</a>.</p>
+  </div>
+</section>
+
+<section id="contatti" data-screen-label="Contatti" style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) 24px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,96px);align-items:start">
+    <div>
+      <div style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:oklch(0.55 0.17 32);margin-bottom:18px">Contatti</div>
+      <h2 style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(36px,4.6vw,64px);line-height:1.02;letter-spacing:-0.015em;margin:0 0 20px;text-wrap:balance">Vienici a trovare. Prenota e vivi la tua vacanza.</h2>
+      <p style="font-size:17px;line-height:1.6;color:#3d424a;margin:0 0 32px">Per informazioni, prezzi e disponibilità contattaci o compila il modulo.</p>
+      <div style="display:flex;flex-direction:column;border-top:1px solid #e6dfd5">
+        <a href="tel:+393278272983" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;border-bottom:1px solid #e6dfd5;color:#23272e" style-hover="color:oklch(0.55 0.17 32)">
+          <span><span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#6b6f76;margin-bottom:4px">Telefono · chiama ora</span><span style="font-size:22px;font-weight:600">+39 327 827 2983</span></span><span style="font-size:22px">→</span>
+        </a>
+        <a href="mailto:villarossocorallo@gmail.com" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;border-bottom:1px solid #e6dfd5;color:#23272e" style-hover="color:oklch(0.55 0.17 32)">
+          <span style="min-width:0"><span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#6b6f76;margin-bottom:4px">Email</span><span style="font-size:20px;font-weight:600;overflow-wrap:anywhere">villarossocorallo@gmail.com</span></span><span style="font-size:22px">→</span>
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=36.79094,14.49358" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;border-bottom:1px solid #e6dfd5;color:#23272e" style-hover="color:oklch(0.55 0.17 32)">
+          <span><span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#6b6f76;margin-bottom:4px">Indirizzo</span><span style="font-size:18px;font-weight:600;line-height:1.4">Corso Aldo Moro, 11<br>97017 Santa Croce Camerina (RG), fraz. Punta Secca</span></span><span style="font-size:22px">↗</span>
+        </a>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:24px">
+        <a href="https://www.facebook.com/pages/category/Vacation-Home-Rental/Villa-Rosso-Corallo-204336596964754/" target="_blank" rel="noopener" style="padding:10px 18px;border:1px solid #ddd6cc;border-radius:999px;color:#23272e;font-weight:600;font-size:14px" style-hover="border-color:#23272e;color:#23272e">Facebook</a>
+        <a href="https://www.instagram.com/villa_rosso_corallo/" target="_blank" rel="noopener" style="padding:10px 18px;border:1px solid #ddd6cc;border-radius:999px;color:#23272e;font-weight:600;font-size:14px" style-hover="border-color:#23272e;color:#23272e">Instagram</a>
+      </div>
+    </div>
+
+    <form action="https://formsubmit.co/villarossocorallo@gmail.com" method="POST" style="background:#fff;border:1px solid #e6dfd5;border-radius:22px;padding:clamp(24px,3.5vw,40px);display:flex;flex-direction:column;gap:18px">
+      <input type="hidden" name="_subject" value="Nuova richiesta dal sito Villa Rosso Corallo">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <div style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:32px;line-height:1.1">Richiedi disponibilità</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:14px">
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#4a4f57">Nome *<input name="Nome" required style="height:48px;padding:0 14px;border:1px solid #ddd6cc;border-radius:10px;font:inherit;font-size:16px;font-weight:400;background:#fcfaf7;color:#23272e"></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#4a4f57">Cognome *<input name="Cognome" required style="height:48px;padding:0 14px;border:1px solid #ddd6cc;border-radius:10px;font:inherit;font-size:16px;font-weight:400;background:#fcfaf7;color:#23272e"></label>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:14px">
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#4a4f57">Email *<input type="email" name="email" required style="height:48px;padding:0 14px;border:1px solid #ddd6cc;border-radius:10px;font:inherit;font-size:16px;font-weight:400;background:#fcfaf7;color:#23272e"></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#4a4f57">Telefono<input type="tel" name="Telefono" style="height:48px;padding:0 14px;border:1px solid #ddd6cc;border-radius:10px;font:inherit;font-size:16px;font-weight:400;background:#fcfaf7;color:#23272e"></label>
+      </div>
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:#4a4f57">Richiesta *<textarea name="Richiesta" required rows="5" placeholder="Date di arrivo e partenza, numero di ospiti, casa preferita…" style="padding:12px 14px;border:1px solid #ddd6cc;border-radius:10px;font:inherit;font-size:16px;font-weight:400;background:#fcfaf7;color:#23272e;resize:vertical"></textarea></label>
+      <p style="margin:0;font-size:13px;line-height:1.5;color:#5a5f67"><strong style="color:#23272e">Importante:</strong> per essere ricontattati è necessario inserire un indirizzo email valido. In alternativa indica un numero di telefono.</p>
+      <label style="display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.5;color:#4a4f57"><input type="checkbox" required style="margin-top:3px;width:16px;height:16px;accent-color:oklch(0.62 0.17 32)"><span>Ho letto l’<a href="#privacy" onClick="{{ openPrivacy }}">informativa privacy</a> e acconsento al trattamento dei dati. *</span></label>
+      <button type="submit" style="height:54px;border:0;border-radius:999px;background:oklch(0.62 0.17 32);color:#fff;font:inherit;font-weight:700;font-size:16px;cursor:pointer" style-hover="background:oklch(0.55 0.17 32)">Invia richiesta</button>
+      <div style="font-size:12px;color:#8a8f96">* campo obbligatorio</div>
+    </form>
+  </div>
+</section>
+
+<footer id="privacy" style="background:#1b1e23;color:#c9c4bc">
+  <div style="max-width:1280px;margin:0 auto;padding:56px 24px 40px">
+    <div style="display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:flex-start;padding-bottom:32px;border-bottom:1px solid #30353d">
+      <div>
+        <div style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:32px;color:#f8f4ef;margin-bottom:10px">Villa Rosso Corallo</div>
+        <div style="font-size:14px;line-height:1.6">Corso Aldo Moro, 11 · 97017 Punta Secca (Santa Croce Camerina) – RG</div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:20px;font-size:14px;font-weight:500">
+        <a href="#case" style="color:#f8f4ef">Le case</a>
+        <a href="#recensioni" style="color:#f8f4ef">Recensioni</a>
+        <a href="#contatti" style="color:#f8f4ef">Contatti</a>
+        <a href="https://www.instagram.com/villa_rosso_corallo/" target="_blank" rel="noopener" style="color:#f8f4ef">Instagram</a>
+        <a href="https://www.facebook.com/pages/category/Vacation-Home-Rental/Villa-Rosso-Corallo-204336596964754/" target="_blank" rel="noopener" style="color:#f8f4ef">Facebook</a>
+      </div>
+    </div>
+    <button onClick="{{ togglePrivacy }}" style="display:flex;align-items:center;gap:10px;margin-top:24px;padding:0;border:0;background:transparent;color:#f8f4ef;font:inherit;font-size:14px;font-weight:600;cursor:pointer">Privacy policy <span>{{ privacyIcon }}</span></button>
+    <sc-if value="{{ privacyOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:18px;max-width:820px;font-size:13px;line-height:1.7;display:flex;flex-direction:column;gap:12px">
+        <p style="margin:0">La presente informativa descrive le modalità di gestione del sito www.villarossocorallo.com in riferimento al trattamento dei dati personali degli utenti che lo consultano, ai sensi del Regolamento UE 2016/679 (GDPR).</p>
+        <p style="margin:0"><strong style="color:#f8f4ef">1. Titolare del trattamento</strong><br>Villa Rosso Corallo – Corso Aldo Moro, 11 – 97017 Punta Secca (Santa Croce Camerina) – RG, Italia. Email: villarossocorallo@gmail.com – Telefono: +39 327 8272983</p>
+        <p style="margin:0"><strong style="color:#f8f4ef">2. Tipologie di dati raccolti</strong><br>a) Dati di navigazione: indirizzo IP, tipo di browser, pagine visitate, data e ora di accesso.<br>b) Dati forniti volontariamente: nome, cognome, email, numero di telefono e messaggi inviati tramite modulo di contatto o richiesta prenotazione.</p>
+        <p style="margin:0"><strong style="color:#f8f4ef">3. Finalità e base giuridica del trattamento</strong><br>– Rispondere a richieste di informazioni o prenotazioni (art. 6 par. 1 lett. b GDPR).<br>– Gestione tecnica e sicurezza del sito (art. 6 par. 1 lett. f GDPR).<br>– Eventuali comunicazioni promozionali solo previo consenso (art. 6 par. 1 lett. a GDPR).</p>
+        <p style="margin:0"><strong style="color:#f8f4ef">4. Modalità di trattamento</strong><br>Il trattamento avviene mediante strumenti elettronici e/o cartacei adottando misure di sicurezza adeguate a garantire la protezione dei dati personali.</p>
+        <p style="margin:0"><strong style="color:#f8f4ef">5. Conservazione dei dati</strong><br>I dati saranno conservati per il tempo strettamente necessario: dati di navigazione fino a 6 mesi; dati richieste/prenotazioni fino a 24 mesi o fino a richiesta di cancellazione.</p>
+        <p style="margin:0"><strong style="color:#f8f4ef">6. Comunicazione dei dati</strong><br>I dati non saranno diffusi. Potranno essere comunicati a fornitori di servizi tecnici e hosting, o ad autorità competenti nei casi previsti dalla legge.</p>
+        <p style="margin:0"><strong style="color:#f8f4ef">7. Trasferimento extra UE</strong><br>I dati non saranno trasferiti fuori dall’Unione Europea salvo adeguate garanzie previste dagli artt. 44-49 GDPR.</p>
+        <p style="margin:0"><strong style="color:#f8f4ef">8. Diritti dell’interessato</strong><br>L’interessato può esercitare i diritti di accesso, rettifica, cancellazione, limitazione, opposizione e portabilità scrivendo a villarossocorallo@gmail.com.</p>
+        <p style="margin:0"><strong style="color:#f8f4ef">9. Reclamo</strong><br>È possibile proporre reclamo al Garante per la protezione dei dati personali qualora si ritenga che il trattamento violi il GDPR. La presente informativa può essere soggetta ad aggiornamenti.</p>
+      </div>
+    </sc-if>
+    <div style="display:flex;flex-wrap:wrap;gap:24px;margin-top:16px">
+      <button onClick="{{ toggleCookiePolicy }}" style="display:flex;align-items:center;gap:10px;padding:0;border:0;background:transparent;color:#f8f4ef;font:inherit;font-size:14px;font-weight:600;cursor:pointer">Cookie policy <span>{{ cookiePolicyIcon }}</span></button>
+      <button onClick="{{ openCookieSettings }}" style="padding:0;border:0;background:transparent;color:oklch(0.8 0.11 36);font:inherit;font-size:14px;font-weight:600;cursor:pointer">Modifica preferenze cookie</button>
+    </div>
+    <sc-if value="{{ cookiePolicyOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:18px;max-width:820px;font-size:13px;line-height:1.7;display:flex;flex-direction:column;gap:12px">
+        <p style="margin:0">Questa cookie policy descrive i cookie e le tecnologie simili utilizzati dal sito www.villarossocorallo.com, ai sensi del Regolamento UE 2016/679 (GDPR), della Direttiva 2002/58/CE e delle Linee guida del Garante Privacy del 10 giugno 2021.</p>
+        <p style="margin:0"><strong style="color:#f8f4ef">1. Cosa sono i cookie</strong><br>I cookie sono piccoli file di testo che i siti visitati salvano sul dispositivo dell’utente, per essere poi ritrasmessi agli stessi siti alla visita successiva.</p>
+        <p style="margin:0"><strong style="color:#f8f4ef">2. Cookie tecnici necessari</strong><br>Il sito memorizza nel browser (localStorage, chiave “vrc_cookie_consent”) le scelte espresse sui cookie, per non riproporre il banner a ogni visita. Durata: 12 mesi. Non richiedono consenso.</p>
+        <p style="margin:0"><strong style="color:#f8f4ef">3. Cookie di preferenza (Google Translate)</strong><br>Se attivi la traduzione automatica, il cookie “googtrans” memorizza la lingua scelta e il servizio Google Translate (Google Ireland Ltd.) può impostare propri cookie. Vengono installati solo previo consenso.</p>
+        <p style="margin:0"><strong style="color:#f8f4ef">4. Contenuti di terze parti (Google Maps)</strong><br>La mappa interattiva è fornita da Google Ireland Ltd., che può installare cookie propri anche con finalità di profilazione. La mappa viene caricata solo previo consenso. Informativa: <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener" style="color:oklch(0.8 0.11 36)">policies.google.com</a>.</p>
+        <p style="margin:0"><strong style="color:#f8f4ef">5. Modulo di contatto</strong><br>Il modulo di richiesta è gestito dal servizio FormSubmit, che riceve i dati solo al momento dell’invio del modulo.</p>
+        <p style="margin:0"><strong style="color:#f8f4ef">6. Gestione del consenso</strong><br>Puoi modificare o revocare il consenso in qualsiasi momento tramite il link “Modifica preferenze cookie” in fondo alla pagina, oppure cancellando i cookie dalle impostazioni del browser.</p>
+        <p style="margin:0"><strong style="color:#f8f4ef">7. Titolare e diritti</strong><br>Il titolare del trattamento è Villa Rosso Corallo (vedi Privacy policy). Per esercitare i tuoi diritti scrivi a villarossocorallo@gmail.com.</p>
+      </div>
+    </sc-if>
+    <div style="display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:32px;font-size:12px;color:#8a8f96">
+      <span>Comfort · CIR 19088010C208517 · CIN IT088010C2DCXN9FMD</span>
+      <span>Deluxe · CIR 19088010C208512 · CIN IT088010C2ZHZM3VDY</span>
+    </div>
+  </div>
+</footer>
+
+<sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
+  <div class="notranslate" onClick="{{ closeLb }}" style="position:fixed;inset:0;z-index:100;background:rgba(15,14,13,0.94);display:flex;align-items:center;justify-content:center;padding:64px 16px">
+    <img src="{{ lbSrc }}" alt="Foto" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:6px">
+    <div style="position:absolute;top:18px;left:24px;color:#f8f4ef;font-size:14px;font-weight:600;letter-spacing:0.06em">{{ lbPos }}</div>
+    <button onClick="{{ closeLb }}" style="position:absolute;top:12px;right:16px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,0.12);color:#fff;font-size:22px;cursor:pointer">×</button>
+    <button onClick="{{ prevLb }}" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:52px;height:52px;border:0;border-radius:50%;background:rgba(255,255,255,0.12);color:#fff;font-size:22px;cursor:pointer">←</button>
+    <button onClick="{{ nextLb }}" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);width:52px;height:52px;border:0;border-radius:50%;background:rgba(255,255,255,0.12);color:#fff;font-size:22px;cursor:pointer">→</button>
+  </div>
+</sc-if>
+
+<sc-if value="{{ ckBanner }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;left:0;right:0;bottom:0;z-index:90;display:flex;justify-content:center;padding:16px;pointer-events:none">
+    <div role="dialog" aria-label="Cookie" style="pointer-events:auto;width:100%;max-width:980px;max-height:calc(100vh - 32px);overflow:auto;background:#fff;border:1px solid #e6dfd5;border-radius:20px;box-shadow:0 30px 80px rgba(20,18,16,0.28);padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;justify-content:space-between;gap:16px;align-items:flex-start">
+        <div style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(24px,2.4vw,30px);line-height:1.1">Questo sito utilizza i cookie</div>
+        <button onClick="{{ closeBanner }}" aria-label="Chiudi e rifiuta" style="width:36px;height:36px;flex-shrink:0;border:0;border-radius:50%;background:#f1ece5;color:#23272e;font-size:20px;cursor:pointer">×</button>
+      </div>
+      <p style="margin:0;font-size:15px;line-height:1.6;color:#3d424a;text-wrap:pretty">Utilizziamo cookie tecnici necessari al funzionamento del sito e, solo con il tuo consenso, cookie di preferenza (traduzione automatica) e contenuti di terze parti (mappa di Google). Puoi modificare la scelta in qualsiasi momento. <a href="#privacy" onClick="{{ openCookiePolicy }}" style="font-weight:600">Leggi la cookie policy</a></p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px">
+        <sc-for list="{{ ckCats }}" as="c" hint-placeholder-count="3">
+          <div style="border:1px solid #e6dfd5;border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+              <strong style="font-size:15px">{{ c.label }}</strong>
+              <button onClick="{{ c.toggle }}" aria-label="{{ c.label }}" style="width:48px;height:28px;flex-shrink:0;border:0;border-radius:999px;padding:3px;display:flex;justify-content:{{ c.jc }};background:{{ c.bg }};cursor:{{ c.cursor }}"><span style="width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.2)"></span></button>
+            </div>
+            <div style="font-size:13px;line-height:1.5;color:#5a5f67">{{ c.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px">
+        <button onClick="{{ ckDeny }}" style="height:50px;border:0;border-radius:999px;background:#23272e;color:#fff;font:inherit;font-weight:600;font-size:15px;cursor:pointer" style-hover="background:#000">Rifiuta</button>
+        <button onClick="{{ ckSelection }}" style="height:50px;border:1px solid #23272e;border-radius:999px;background:#fff;color:#23272e;font:inherit;font-weight:600;font-size:15px;cursor:pointer" style-hover="background:#f8f4ef">Consenti selezione</button>
+        <button onClick="{{ ckAll }}" style="height:50px;border:0;border-radius:999px;background:oklch(0.62 0.17 32);color:#fff;font:inherit;font-weight:600;font-size:15px;cursor:pointer" style-hover="background:oklch(0.55 0.17 32)">Accetta tutti</button>
+      </div>
+    </div>
+  </div>
+</sc-if>
+<sc-if value="{{ ckStatus }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-label="Impostazioni cookie" style="position:fixed;left:16px;bottom:16px;z-index:90;width:min(380px,calc(100vw - 32px));background:#fff;border:1px solid #e6dfd5;border-radius:18px;box-shadow:0 30px 80px rgba(20,18,16,0.28);display:flex;flex-direction:column">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid #eee7de">
+      <strong style="font-size:16px">Impostazioni cookie</strong>
+      <button onClick="{{ closeCk }}" aria-label="Chiudi" style="width:32px;height:32px;border:0;border-radius:50%;background:#f1ece5;font-size:18px;cursor:pointer;color:#23272e">×</button>
+    </div>
+    <div style="padding:18px 20px;display:flex;flex-direction:column;gap:10px">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#6b6f76">Stato attuale</div>
+      <sc-for list="{{ ckStatusList }}" as="s" hint-placeholder-count="3">
+        <div style="display:flex;gap:10px;align-items:center;font-size:15px"><span style="width:18px;font-weight:700;color:{{ s.color }}">{{ s.mark }}</span><span>{{ s.label }}</span></div>
+      </sc-for>
+      <div style="margin-top:6px;padding:12px 14px;background:#f8f4ef;border-radius:10px;font-size:12px;line-height:1.55;color:#4a4f57;overflow-wrap:anywhere"><strong style="color:#23272e">Data del consenso:</strong> {{ ckDate }}<br><strong style="color:#23272e">ID del consenso:</strong> <span class="notranslate">{{ ckId }}</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 20px 20px">
+      <button onClick="{{ ckRevoke }}" style="height:44px;border:1px solid #23272e;border-radius:999px;background:#fff;color:#23272e;font:inherit;font-weight:600;font-size:14px;cursor:pointer">Revoca consenso</button>
+      <button onClick="{{ ckEdit }}" style="height:44px;border:0;border-radius:999px;background:oklch(0.62 0.17 32);color:#fff;font:inherit;font-weight:600;font-size:14px;cursor:pointer">Modifica consenso</button>
+    </div>
+  </div>
+</sc-if>
+<sc-if value="{{ ckFab }}" hint-placeholder-val="{{ false }}">
+  <button onClick="{{ openCookieSettings }}" aria-label="Impostazioni cookie" style="position:fixed;left:16px;bottom:16px;z-index:80;height:40px;padding:0 16px;border:1px solid #e6dfd5;border-radius:999px;background:#fff;color:#23272e;font:inherit;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 8px 24px rgba(20,18,16,0.12)">Cookie</button>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const mk = a => a.map(f => ({ t: f, o: f }));
+const G = {
+  comfort: mk(["foto/comfort-01.jpg","foto/comfort-02.jpg","foto/comfort-03.jpg","foto/comfort-04.jpg","foto/comfort-05.png","foto/comfort-06.jpg","foto/comfort-07.png","foto/comfort-08.jpg","foto/comfort-09.jpg","foto/comfort-10.png"]),
+  deluxe: mk(["foto/deluxe-01.jpg","foto/deluxe-02.jpg","foto/deluxe-03.png","foto/deluxe-04.jpg","foto/deluxe-05.png","foto/deluxe-06.png","foto/deluxe-07.png","foto/deluxe-08.jpg","foto/deluxe-09.jpg","foto/deluxe-10.png"]),
+  dintorni: mk(["foto/dintorni-01.jpg","foto/dintorni-02.jpg","foto/dintorni-03.jpg","foto/dintorni-04.jpg","foto/dintorni-05.jpg","foto/dintorni-06.jpg","foto/dintorni-07.jpg","foto/dintorni-08.jpg","foto/dintorni-09.jpg","foto/dintorni-10.jpg"]),
+  reviews: []
+};
+const REV_LABELS = ['Google','Airbnb','Booking','Vrbo'];
+const LANGS = [['it','Italiano'],['en','English'],['de','Deutsch'],['fr','Français'],['es','Español'],['nl','Nederlands'],['pl','Polski']];
+
+class Component extends DCLogic {
+  state = { lb: null, langOpen: false, privacyOpen: false, consent: null, ckUI: null, draft: { preferences: false, marketing: false }, cookiePolicyOpen: false };
+
+  componentDidMount() {
+    this.onKey = e => {
+      if (!this.state.lb) return;
+      if (e.key === 'Escape') this.setState({ lb: null });
+      if (e.key === 'ArrowRight') this.step(1);
+      if (e.key === 'ArrowLeft') this.step(-1);
+    };
+    window.addEventListener('keydown', this.onKey);
+    this.onDoc = e => { if (this.state.langOpen && !e.target.closest('.notranslate')) this.setState({ langOpen: false }); };
+    document.addEventListener('click', this.onDoc);
+    let c = null;
+    try { c = JSON.parse(localStorage.getItem('vrc_cookie_consent')); } catch (e) {}
+    if (c && Date.now() - new Date(c.date).getTime() > 365 * 864e5) c = null;
+    this.setState({ consent: c, ckUI: c ? null : 'banner', draft: { preferences: !!(c && c.preferences), marketing: !!(c && c.marketing) } });
+    if (c && c.preferences) this.loadGT(); else this.writeGT('it');
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.onKey);
+    document.removeEventListener('click', this.onDoc);
+  }
+
+  curLang() {
+    const m = document.cookie.match(/googtrans=\/[^/]+\/([^;]+)/);
+    return m ? decodeURIComponent(m[1]) : 'it';
+  }
+  loadGT() {
+    if (window.__gtLoaded) return;
+    window.__gtLoaded = true;
+    window.googleTranslateElementInit = () => {
+      new window.google.translate.TranslateElement({ pageLanguage: 'it', autoDisplay: false }, 'google_translate_element');
+    };
+    const s = document.createElement('script');
+    s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.body.appendChild(s);
+  }
+  writeGT(code) {
+    const host = location.hostname;
+    const exp = code === 'it' ? '; expires=Thu, 01 Jan 1970 00:00:00 GMT' : '';
+    const val = code === 'it' ? '' : `/it/${code}`;
+    document.cookie = `googtrans=${val}; path=/${exp}`;
+    if (host && host.includes('.')) {
+      document.cookie = `googtrans=${val}; path=/; domain=${host}${exp}`;
+      document.cookie = `googtrans=${val}; path=/; domain=.${host.replace(/^www\./, '')}${exp}`;
+    }
+  }
+  setLang(code) {
+    const c = this.state.consent;
+    if (!(c && c.preferences)) { this.setState({ langOpen: false, ckUI: 'banner', draft: { preferences: true, marketing: !!(c && c.marketing) } }); return; }
+    this.writeGT(code);
+    location.reload();
+  }
+  saveConsent(p) {
+    const prev = this.state.consent;
+    const c = { necessary: true, preferences: !!p.preferences, marketing: !!p.marketing, date: new Date().toISOString(), id: (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) };
+    try { localStorage.setItem('vrc_cookie_consent', JSON.stringify(c)); } catch (e) {}
+    this.setState({ consent: c, ckUI: null, draft: { preferences: c.preferences, marketing: c.marketing } });
+    if (c.preferences) this.loadGT();
+    else if (prev && prev.preferences) { this.writeGT('it'); location.reload(); }
+  }
+
+  open(key, i) { document.body.style.overflow = 'hidden'; this.setState({ lb: { key, i } }); }
+  close() { document.body.style.overflow = ''; this.setState({ lb: null }); }
+  step(d) {
+    this.setState(s => {
+      const n = G[s.lb.key].length;
+      return { lb: { key: s.lb.key, i: (s.lb.i + d + n) % n } };
+    });
+  }
+
+  cookieVals() {
+    const { consent: c, draft: d, ckUI: ui, cookiePolicyOpen } = this.state;
+    const CORAL = 'oklch(0.62 0.17 32)';
+    const cats = [
+      { label: 'Necessari', desc: 'Indispensabili al funzionamento del sito, ad esempio per ricordare le tue scelte sui cookie. Sempre attivi.', locked: true },
+      { key: 'preferences', label: 'Preferenze', desc: 'Traduzione automatica del sito con Google Translate e memorizzazione della lingua scelta.' },
+      { key: 'marketing', label: 'Contenuti di terze parti', desc: 'Mappa interattiva di Google Maps, che può impostare cookie di Google anche a fini di marketing.' }
+    ];
+    const cp = !!(c && c.preferences), cm = !!(c && c.marketing);
+    return {
+      ckCats: cats.map(x => {
+        const v = x.locked ? true : d[x.key];
+        return { ...x, bg: x.locked ? 'oklch(0.8 0.08 32)' : (v ? CORAL : '#cfc8be'), jc: v ? 'flex-end' : 'flex-start', cursor: x.locked ? 'not-allowed' : 'pointer',
+          toggle: () => { if (!x.locked) this.setState(s => ({ draft: { ...s.draft, [x.key]: !s.draft[x.key] } })); } };
+      }),
+      ckBanner: ui === 'banner', ckStatus: ui === 'status' && !!c, ckFab: !!c && !ui,
+      ckDeny: () => this.saveConsent({}),
+      ckSelection: () => this.saveConsent(this.state.draft),
+      ckAll: () => this.saveConsent({ preferences: true, marketing: true }),
+      closeBanner: () => c ? this.setState({ ckUI: null }) : this.saveConsent({}),
+      ckStatusList: c ? [['Necessari', true], ['Preferenze', cp], ['Contenuti di terze parti', cm]].map(([label, v]) => ({ label, mark: v ? '✓' : '✕', color: v ? CORAL : '#8a8f96' })) : [],
+      ckDate: c ? new Date(c.date).toLocaleString('it-IT') : '',
+      ckId: c ? c.id : '',
+      openCookieSettings: () => this.setState({ ckUI: c ? 'status' : 'banner' }),
+      closeCk: () => this.setState({ ckUI: null }),
+      ckEdit: () => this.setState({ ckUI: 'banner', draft: { preferences: cp, marketing: cm } }),
+      ckRevoke: () => this.saveConsent({}),
+      mapOk: cm, mapBlocked: !cm,
+      allowMap: () => this.saveConsent({ preferences: cp, marketing: true }),
+      gtBlocked: !cp,
+      allowPrefs: () => this.saveConsent({ preferences: true, marketing: cm }),
+      cookiePolicyOpen, cookiePolicyIcon: cookiePolicyOpen ? '−' : '+',
+      toggleCookiePolicy: () => this.setState(s => ({ cookiePolicyOpen: !s.cookiePolicyOpen })),
+      openCookiePolicy: () => this.setState({ cookiePolicyOpen: true })
+    };
+  }
+
+  renderVals() {
+    const { lb, langOpen, privacyOpen } = this.state;
+    const withOpen = key => G[key].map((p, i) => ({ ...p, open: () => this.open(key, i) }));
+    const thumbs = key => {
+      const all = withOpen(key);
+      return all.slice(1, 5).map((p, i) => ({ ...p, more: i === 3 && all.length > 5 ? all.length - 5 : 0 }));
+    };
+    const dintorni = withOpen('dintorni').map((p, i) => ({ ...p, rows: (i % 5 === 0) ? 'span 2' : 'span 1' }));
+    const cur = this.curLang();
+    return {
+      comfortMain: { open: () => this.open('comfort', 0) },
+      deluxeMain: { open: () => this.open('deluxe', 0) },
+      comfortThumbs: thumbs('comfort'),
+      deluxeThumbs: thumbs('deluxe'),
+      dintorni,
+      reviews: withOpen('reviews').map((p, i) => ({ ...p, label: 'Recensioni ' + REV_LABELS[i] })),
+      lbOpen: !!lb,
+      lbSrc: lb ? G[lb.key][lb.i].o : '',
+      lbPos: lb ? `${lb.i + 1} / ${G[lb.key].length}` : '',
+      closeLb: e => { if (e.target === e.currentTarget) this.close(); },
+      prevLb: e => { e.stopPropagation(); this.step(-1); },
+      nextLb: e => { e.stopPropagation(); this.step(1); },
+      curLang: cur.toUpperCase().slice(0, 5),
+      langDisplay: langOpen ? 'block' : 'none',
+      toggleLang: () => this.setState(s => ({ langOpen: !s.langOpen })),
+      langs: LANGS.map(([code, label]) => ({ code: code.toUpperCase(), label, pick: () => this.setLang(code) })),
+      ...this.cookieVals(),
+      privacyOpen,
+      privacyIcon: privacyOpen ? '−' : '+',
+      togglePrivacy: () => this.setState(s => ({ privacyOpen: !s.privacyOpen })),
+      openPrivacy: () => this.setState({ privacyOpen: true })
+    };
+  }
+}
+</script>
+</body>
+</html>
