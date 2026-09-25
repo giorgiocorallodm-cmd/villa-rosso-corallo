@@ -46,13 +46,18 @@ iframe.skiptranslate,.goog-te-banner-frame,#goog-gt-tt,.VIpgJd-ZVi9od-ORHb-OEVmc
     <div style="display:flex;align-items:center;gap:10px;order:2">
       <div class="notranslate" style="position:static">
         <button onClick="{{ toggleLang }}" style="display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border:1px solid #ddd6cc;border-radius:999px;background:#fff;font:inherit;font-size:13px;font-weight:600;color:#23272e;cursor:pointer;letter-spacing:0.04em">
-          <span style="width:18px;height:13px;border-radius:2px;background:{{ curFlag }};box-shadow:0 0 0 1px rgba(0,0,0,0.12);flex-shrink:0"></span>
+          <sc-if value="{{ curIsUK }}" hint-placeholder-val="{{ false }}"><span style="width:18px;height:13px;border-radius:2px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,0.12);flex-shrink:0">{{ ukFlagEl }}</span></sc-if>
+          <sc-if value="{{ !curIsUK }}" hint-placeholder-val="{{ true }}"><span style="width:18px;height:13px;border-radius:2px;background:{{ curFlag }};box-shadow:0 0 0 1px rgba(0,0,0,0.12);flex-shrink:0"></span></sc-if>
           <span>{{ curLang }}</span>
         </button>
         <div style="display:{{ langDisplay }};position:absolute;right:24px;top:100%;margin-top:8px;width:min(240px,calc(100vw - 48px));max-height:min(70vh,480px);overflow:auto;background:#fff;border:1px solid #e6dfd5;border-radius:14px;box-shadow:0 20px 50px rgba(30,25,20,0.14);padding:8px;z-index:10">
           <sc-for list="{{ langs }}" as="l" hint-placeholder-count="6">
             <button onClick="{{ l.pick }}" style="display:flex;justify-content:space-between;width:100%;padding:10px 12px;border:0;background:transparent;border-radius:8px;font:inherit;font-size:14px;color:#23272e;cursor:pointer;text-align:left" style-hover="background:#f5efe8">
-              <span style="display:flex;align-items:center;gap:10px"><span style="width:20px;height:14px;border-radius:2px;background:{{ l.flag }};box-shadow:0 0 0 1px rgba(0,0,0,0.12);flex-shrink:0"></span><span>{{ l.label }}</span></span><span style="color:#8a8f96;font-size:12px;font-weight:600">{{ l.code }}</span>
+              <span style="display:flex;align-items:center;gap:10px">
+                <sc-if value="{{ l.isUK }}" hint-placeholder-val="{{ false }}"><span style="width:20px;height:14px;border-radius:2px;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,0.12);flex-shrink:0">{{ ukFlagEl }}</span></sc-if>
+                <sc-if value="{{ !l.isUK }}" hint-placeholder-val="{{ true }}"><span style="width:20px;height:14px;border-radius:2px;background:{{ l.flag }};box-shadow:0 0 0 1px rgba(0,0,0,0.12);flex-shrink:0"></span></sc-if>
+                <span>{{ l.label }}</span>
+              </span><span style="color:#8a8f96;font-size:12px;font-weight:600">{{ l.code }}</span>
             </button>
           </sc-for>
           <div style="border-top:1px solid #eee7de;margin:6px 4px 0;padding:10px 8px 4px">
@@ -434,7 +439,14 @@ const G = {
   reviews: []
 };
 const REV_LABELS = ['Google','Airbnb','Booking','Vrbo'];
-const LANGS = [['it','Italiano','linear-gradient(90deg,#009246 0 33%,#fff 33% 66%,#ce2b37 66%)'],['en','English','linear-gradient(180deg,#012169 0 34%,#fff 34% 66%,#c8102e 66%)'],['de','Deutsch','linear-gradient(180deg,#000 0 33%,#dd0000 33% 66%,#ffce00 66%)'],['fr','Français','linear-gradient(90deg,#0055a4 0 33%,#fff 33% 66%,#ef4135 66%)'],['es','Español','linear-gradient(180deg,#aa151b 0 25%,#f1bf00 25% 75%,#aa151b 75%)'],['nl','Nederlands','linear-gradient(180deg,#ae1c28 0 33%,#fff 33% 66%,#21468b 66%)'],['pl','Polski','linear-gradient(180deg,#fff 0 50%,#dc143c 50%)']];
+const UK_ELEMENT = React.createElement('svg', { viewBox: '0 0 60 36', style: { width: '100%', height: '100%', display: 'block' } },
+  React.createElement('rect', { width: 60, height: 36, fill: '#012169' }),
+  React.createElement('path', { d: 'M0,0 L60,36 M60,0 L0,36', stroke: '#fff', strokeWidth: 7 }),
+  React.createElement('path', { d: 'M0,0 L27,16.2 M0,16.2 L27,0 M33,0 L60,16.2 M60,0 L33,16.2 M0,36 L27,19.8 M0,19.8 L27,36 M33,36 L60,19.8 M60,36 L33,19.8', stroke: '#C8102E', strokeWidth: 3 }),
+  React.createElement('path', { d: 'M30,0 V36 M0,18 H60', stroke: '#fff', strokeWidth: 11 }),
+  React.createElement('path', { d: 'M30,0 V36 M0,18 H60', stroke: '#C8102E', strokeWidth: 6.5 })
+);
+const LANGS = [['it','Italiano','linear-gradient(90deg,#009246 0 33%,#fff 33% 66%,#ce2b37 66%)',false],['en','English','',true],['de','Deutsch','linear-gradient(180deg,#000 0 33%,#dd0000 33% 66%,#ffce00 66%)',false],['fr','Français','linear-gradient(90deg,#0055a4 0 33%,#fff 33% 66%,#ef4135 66%)',false],['es','Español','linear-gradient(180deg,#aa151b 0 25%,#f1bf00 25% 75%,#aa151b 75%)',false],['nl','Nederlands','linear-gradient(180deg,#ae1c28 0 33%,#fff 33% 66%,#21468b 66%)',false],['pl','Polski','linear-gradient(180deg,#fff 0 50%,#dc143c 50%)',false]];
 const FLAGS = { IT:LANGS[0][2], EN:LANGS[1][2], DE:LANGS[2][2], FR:LANGS[3][2], ES:LANGS[4][2], NL:LANGS[5][2], PL:LANGS[6][2] };
 
 class Component extends DCLogic {
@@ -570,9 +582,11 @@ class Component extends DCLogic {
       nextLb: e => { e.stopPropagation(); this.step(1); },
       curLang: cur.toUpperCase().slice(0, 5),
       curFlag: FLAGS[cur.toUpperCase()] || 'linear-gradient(180deg,#ddd,#bbb)',
+      curIsUK: cur.toUpperCase() === 'EN',
+      ukFlagEl: UK_ELEMENT,
       langDisplay: langOpen ? 'block' : 'none',
       toggleLang: () => this.setState(s => ({ langOpen: !s.langOpen })),
-      langs: LANGS.map(([code, label, flag]) => ({ code: code.toUpperCase(), label, flag, pick: () => this.setLang(code) })),
+      langs: LANGS.map(([code, label, flag, isUK]) => ({ code: code.toUpperCase(), label, flag, isUK, pick: () => this.setLang(code) })),
       ...this.cookieVals(),
       privacyOpen,
       privacyIcon: privacyOpen ? '−' : '+',
