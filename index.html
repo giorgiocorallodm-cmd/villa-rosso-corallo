@@ -477,11 +477,17 @@ class Component extends DCLogic {
     const m = document.cookie.match(/googtrans=\/[^/]+\/([^;]+)/);
     return m ? decodeURIComponent(m[1]) : 'it';
   }
-  loadGT() {
+  loadGT(cb) {
+    if (window.__gtReady) { cb && cb(); return; }
+    window.__gtPending = window.__gtPending || [];
+    if (cb) window.__gtPending.push(cb);
     if (window.__gtLoaded) return;
     window.__gtLoaded = true;
     window.googleTranslateElementInit = () => {
       new window.google.translate.TranslateElement({ pageLanguage: 'it', autoDisplay: false }, 'google_translate_element');
+      window.__gtReady = true;
+      (window.__gtPending || []).forEach(fn => fn());
+      window.__gtPending = [];
     };
     const s = document.createElement('script');
     s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
@@ -497,11 +503,23 @@ class Component extends DCLogic {
       document.cookie = `googtrans=${val}; path=/; domain=.${host.replace(/^www\./, '')}${exp}`;
     }
   }
+  applyLangLive(code, tries) {
+    tries = tries || 0;
+    const combo = document.querySelector('select.goog-te-combo');
+    if (combo) {
+      combo.value = code;
+      combo.dispatchEvent(new Event('change'));
+      return;
+    }
+    if (tries < 30) setTimeout(() => this.applyLangLive(code, tries + 1), 100);
+    else location.reload();
+  }
   setLang(code) {
     const c = this.state.consent;
     if (!(c && c.preferences)) { this.setState({ langOpen: false, ckUI: 'banner', draft: { preferences: true, marketing: !!(c && c.marketing) } }); return; }
     this.writeGT(code);
-    location.reload();
+    this.setState({ langOpen: false });
+    this.loadGT(() => this.applyLangLive(code));
   }
   saveConsent(p) {
     const prev = this.state.consent;
