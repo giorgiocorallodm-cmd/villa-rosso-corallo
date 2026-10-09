@@ -35,7 +35,8 @@ iframe.skiptranslate,.goog-te-banner-frame,#goog-gt-tt,.VIpgJd-ZVi9od-ORHb-OEVmc
 </style>
 </helmet>
 
-<header style="position:sticky;top:0;z-index:50;background:rgba(248,244,239,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #e6dfd5">
+<div id="hdrSpacer" style="height:70px"></div>
+<header id="siteHdr" style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(248,244,239,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #e6dfd5">
   <div style="position:relative;max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
     <a href="#top" style="display:flex;align-items:center;gap:10px;color:#23272e;margin-right:auto">
       <span style="width:12px;height:12px;border-radius:50%;background:oklch(0.62 0.17 32)"></span>
@@ -458,6 +459,8 @@ class Component extends DCLogic {
   state = { lb: null, langOpen: false, privacyOpen: false, consent: null, ckUI: null, draft: { preferences: false, marketing: false }, cookiePolicyOpen: false };
 
   componentDidMount() {
+    const fit = () => { const h = document.getElementById('siteHdr'), s = document.getElementById('hdrSpacer'); if (h && s) { s.style.height = h.offsetHeight + 'px'; document.documentElement.style.scrollPaddingTop = (h.offsetHeight + 8) + 'px'; } };
+    fit(); window.addEventListener('resize', fit); setTimeout(fit, 300); setTimeout(fit, 1500);
     this.onKey = e => {
       if (!this.state.lb) return;
       if (e.key === 'Escape') this.setState({ lb: null });
